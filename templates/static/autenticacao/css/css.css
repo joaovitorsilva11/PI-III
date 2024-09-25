@@ -1,0 +1,123 @@
+/* Estilo base */
+.sidebar {
+    background-color: white;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.logo_sidebar {
+    width: 100%; /* Garante que a logo ocupe 100% da largura da sidebar */
+    height: 100%; /* Garante que a logo ocupe 100% da altura da sidebar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+
+.img_logo_sidebar {
+    object-fit: cover; /* Garante que a imagem ocupe a área sem distorção */
+    width: 100%; /* Largura total da sidebar */
+    height: 100%; /* Altura total da sidebar */
+    background-color: #fff;
+}
+
+.area_cadastrar {
+    margin-top: 8%;
+    margin-left: 15%;
+    width: 70%;
+}
+
+.titulo {
+    font-weight: bold;
+}
+
+.sub-titulo {
+    color: gray;
+}
+
+.input-form {
+    margin-top: 15px;
+    width: 100%;
+    padding: 5px;
+    outline: 0;
+}
+
+.input-form:focus {
+    border: 2px solid #27DB8F !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.btn-first {
+    border: none;
+    padding: 5px 15px;
+    font-size: 25px;
+    background-color: #27DB8F;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 1200px) {
+    .area_cadastrar {
+        margin-left: 10%;
+        width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        height: auto;
+        display: block;
+        min-height: 300px; /* Define uma altura mínima */
+    }
+
+    .img_logo_sidebar {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Garante que a imagem preencha a área sem distorção */
+    }
+
+    .area_cadastrar {
+        margin-left: 5%;
+        width: 90%;
+        margin-top: 5%;
+    }
+
+    .btn-first {
+        width: 100%;
+        font-size: 20px;
+        padding: 10px;
+    }
+
+    h3 {
+        position: relative;
+        bottom: 0;
+        margin-top: 20px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .input-form {
+        padding: 10px;
+    }
+
+    .btn-first {
+        font-size: 18px;
+        padding: 12px;
+    }
+
+    .area_cadastrar {
+        width: 100%;
+        margin-left: 0;
+    }
+}
