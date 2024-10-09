@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Em Desenvolvimento</title>
-</head>
-<body>
-    <div style="font-size: 24px;font-weight: bold;align-self: center;margin-left: auto;margin-right: auto;">Em Desenvolvimento</div>
-</body>
-</html>
-
-
-
-<!-- {% extends 'base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block 'head' %}
@@ -25,7 +11,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-2">
-                <a href="{% url 'pacientes' %}" class="link-lateral">
+                <a href="#" class="link-lateral"> <!--{% url 'pacientes' %}-->>
                     <div class="card-lateral">
                         <img src="{% static 'plataforma/img/paciente.png' %}">
                         <br>
@@ -35,7 +21,7 @@
                     </div>
                 </a>
                   
-                <a href="{% url 'dados_paciente_listar' %}" class="link-lateral">
+                <a href="#" class="link-lateral"> <!--{% url 'dados_paciente_listar' %}-->>
                     <div class="card-lateral">
                         <img src="{% static 'plataforma/img/dados_paciente.png' %}">
                         <br>
@@ -45,7 +31,7 @@
                     </div>
                 </a>
                   
-                <a href="{% url 'plano_alimentar_listar' %}" class="link-lateral">
+                 <a href="#" class="link-lateral"> <!--{% url 'plano_alimentar_listar' %} -->
                     <div class="card-lateral">
                         <img src="{% static 'plataforma/img/plano_alimentar.png' %}">
                         <br>
@@ -66,4 +52,4 @@
 
         </div>
     </div>
-{% endblock%} -->
+{% endblock%}
