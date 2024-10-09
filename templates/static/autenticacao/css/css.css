@@ -1,27 +1,34 @@
-/* Estilo base */
+/*Estilo base*/
+
+
 .sidebar {
-    background-color: white;
+    background-color: #27DB8F;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0;
+    float: left; /* Banner na esquerda */
+    width: 25%; /* 25% da tela */
+}
+
+.col-md-9 {
+    width: 75%; /* O restante ocupa 75% da tela */
+    float: right; /* Conteúdo fique à direita */
 }
 
 .logo_sidebar {
-    width: 100%; /* Garante que a logo ocupe 100% da largura da sidebar */
-    height: 100%; /* Garante que a logo ocupe 100% da altura da sidebar */
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
+    background-color: #27DB8F;
 }
 
 .img_logo_sidebar {
-    object-fit: cover; /* Garante que a imagem ocupe a área sem distorção */
-    width: 100%; /* Largura total da sidebar */
-    height: 100%; /* Altura total da sidebar */
-    background-color: #fff;
+    width: 100%;
+    height: auto;
 }
 
 .area_cadastrar {
@@ -73,51 +80,3 @@
     }
 }
 
-@media (max-width: 768px) {
-    .sidebar {
-        height: auto;
-        display: block;
-        min-height: 300px; /* Define uma altura mínima */
-    }
-
-    .img_logo_sidebar {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* Garante que a imagem preencha a área sem distorção */
-    }
-
-    .area_cadastrar {
-        margin-left: 5%;
-        width: 90%;
-        margin-top: 5%;
-    }
-
-    .btn-first {
-        width: 100%;
-        font-size: 20px;
-        padding: 10px;
-    }
-
-    h3 {
-        position: relative;
-        bottom: 0;
-        margin-top: 20px;
-        text-align: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .input-form {
-        padding: 10px;
-    }
-
-    .btn-first {
-        font-size: 18px;
-        padding: 12px;
-    }
-
-    .area_cadastrar {
-        width: 100%;
-        margin-left: 0;
-    }
-}
