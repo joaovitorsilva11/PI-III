@@ -32,12 +32,15 @@ def password_is_valid(request, password, confirm_password):
 
 
 def email_html(path_template: str, assunto: str, para: list, **kwargs) -> dict:
-    
-    html_content = render_to_string(path_template, kwargs)
-    text_content = strip_tags(html_content)
+    try:
+        html_content = render_to_string(path_template, kwargs)
+        text_content = strip_tags(html_content)
 
-    email = EmailMultiAlternatives(assunto, text_content, settings.EMAIL_HOST_USER, para)
+        email = EmailMultiAlternatives(assunto, text_content, settings.EMAIL_HOST_USER, para)
+        email.attach_alternative(html_content, "text/html")
+        email.send()
+        return {'status': 1}
 
-    email.attach_alternative(html_content, "text/html")
-    email.send()
-    return {'status': 1}
+    except Exception as e:
+        print(f"Erro ao enviar e-mail: {e}")
+        return {'status': 0, 'erro': str(e)}

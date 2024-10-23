@@ -20,31 +20,40 @@ def cadastro(request):
             return redirect('/')
         return render(request, 'cadastro.html')
     elif request.method == "POST":
-       username = request.POST.get('usuario')
-       senha = request.POST.get('senha')
-       email = request.POST.get('email')
-       confirmar_senha = request.POST.get('confirmar_senha')
+        username = request.POST.get('usuario')
+        senha = request.POST.get('senha')
+        email = request.POST.get('email')
+        confirmar_senha = request.POST.get('confirmar_senha')
 
-       if not password_is_valid(request, senha, confirmar_senha):
-           return redirect('/auth/cadastro')
-           
-       try:
-            user = User.objects.create_user(username=username,         email=email,
+        if not password_is_valid(request, senha, confirmar_senha):
+            return redirect('/auth/cadastro')
+
+        try:
+            user = User.objects.create_user(username=username, email=email,
                                             password=senha,
                                             is_active=False)
             user.save()
-            
-            token= sha256(f"{username}{email}". encode()).hexdigest()
-            ativacao = Ativacao(token= token, user=user)
+
+            token = sha256(f"{username}{email}".encode()).hexdigest()
+            ativacao = Ativacao(token=token, user=user)
             ativacao.save()
-    
+
             path_template = os.path.join(settings.BASE_DIR, 'autenticacao/templates/emails/cadastro_confirmado.html')
-            email_html(path_template, 'Cadastro confirmado', [email,], username=username, link_ativacao=f"127.0.0.1:8000/auth/ativar_conta/{token}")
             
+            # Enviar e-mail e capturar erros
+            try:
+                email_html(path_template, 'Cadastro confirmado', [email], username=username,
+                           link_ativacao=f"http://127.0.0.1:8000/auth/ativar_conta/{token}")
+            except Exception as e:
+                messages.add_message(request, constants.ERROR, f'Houve um erro ao enviar o e-mail: {str(e)}')
+                return redirect('/auth/cadastro')
+
             messages.add_message(request, constants.SUCCESS, 'Cadastro realizado com sucesso')
             return redirect('/auth/logar')
-       except:
-           messages.add_message(request, constants.ERROR, 'Houve um erro interno no sistema')
+
+        except Exception as e:
+            messages.add_message(request, constants.ERROR, f'Houve um erro interno no sistema: {str(e)}')
+
     return redirect('/auth/cadastro')
 
 def logar(request):
