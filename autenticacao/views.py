@@ -7,10 +7,12 @@ from django.contrib import messages
 from django.contrib.messages import constants
 from django.contrib import auth
 import os
+import uuid
 from django.conf import settings
 from .utils import password_is_valid, email_html
 from .models import Ativacao
 from hashlib import sha256
+from django.utils import timezone
 
 def cadastro(request):
     if request.method == "GET":
@@ -80,3 +82,67 @@ def ativar_conta(request, token):
     token.save()
     messages.add_message(request, constants.SUCCESS, 'Conta ativa com sucesso')
     return redirect('/auth/logar')
+
+def reset_senha(request):
+    if request.method == "GET":
+        return render(request, 'reset_senha.html')  # Renderiza o formulário de recuperação de senha
+    elif request.method == "POST":
+        email = request.POST.get('email')
+
+        # Verifica se o e-mail está associado a um usuário
+        if not User.objects.filter(email=email).exists():
+            messages.add_message(request, constants.ERROR, 'E-mail não encontrado.')
+            return redirect('/auth/reset_senha')  # Retorna um redirecionamento para a página de recuperação
+
+        user = User.objects.get(email=email)
+
+        # Excluindo registros anteriores, se existirem
+        Ativacao.objects.filter(user=user, ativo=False).delete()
+
+        # Gere um token único usando UUID
+        token = str(uuid.uuid4())  # Gera um UUID único
+        ativacao = Ativacao(token=token, user=user)
+        ativacao.save()
+
+        # Envio de e-mail
+        path_template = os.path.join(settings.BASE_DIR, 'autenticacao/templates/emails/reset_senha.html')
+        email_html(path_template, 'Redefinição de senha', [email], username=user.username, link_reset=f"http://127.0.0.1:8000/auth/confirmar_reset_senha/{token}")
+
+        messages.add_message(request, constants.SUCCESS, 'Um link de redefinição de senha foi enviado para seu e-mail.')
+        return redirect('/auth/logar')  # Retorna um redirecionamento para a página de login
+
+    # Se o método não for GET nem POST, deve retornar um erro ou redirecionar
+    return redirect('/auth/logar')  # Redireciona em caso de método inválido
+
+def confirmar_reset_senha(request, token):
+    if request.method == "POST":
+        nova_senha = request.POST.get('senha')
+        confirmar_senha = request.POST.get('confirmar_senha')
+
+        if nova_senha != confirmar_senha:
+            messages.add_message(request, constants.ERROR, 'As senhas não coincidem!')
+            return redirect(f'/auth/confirmar_reset_senha/{token}')
+        
+        # Use filter().first() para evitar múltiplos objetos
+        token_obj = Ativacao.objects.filter(token=token).first()
+        
+        if not token_obj:
+            messages.add_message(request, constants.ERROR, 'Token inválido ou inexistente.')
+            return redirect('/auth/logar')
+
+        if token_obj.ativo:
+            messages.add_message(request, constants.WARNING, 'Este token já foi utilizado.')
+            return redirect('/auth/logar')
+
+        user = token_obj.user
+        user.set_password(nova_senha)
+        user.save()
+
+        token_obj.ativo = True
+        token_obj.save()
+
+        messages.add_message(request, constants.SUCCESS, 'Senha alterada com sucesso!')
+        return redirect('/auth/logar')
+
+    return render(request, 'confirmar_reset_senha.html', {'token': token})
+
