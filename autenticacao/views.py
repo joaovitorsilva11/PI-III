@@ -48,7 +48,7 @@ def cadastro(request):
                 messages.add_message(request, constants.ERROR, f'Houve um erro ao enviar o e-mail: {str(e)}')
                 return redirect('/auth/cadastro')
 
-            messages.add_message(request, constants.SUCCESS, 'Cadastro realizado com sucesso')
+            messages.add_message(request, constants.SUCCESS, 'Cadastro realizado com sucesso, verifique seu email para ativar a conta')
             return redirect('/auth/logar')
 
         except Exception as e:
@@ -89,7 +89,7 @@ def ativar_conta(request, token):
     user.save()
     token.ativo = True
     token.save()
-    messages.add_message(request, constants.SUCCESS, 'Conta ativa com sucesso')
+    messages.add_message(request, constants.SUCCESS, 'Conta ativada com sucesso')
     return redirect('/auth/logar')
 
 def reset_senha(request):
