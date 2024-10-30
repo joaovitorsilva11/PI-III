@@ -10,6 +10,9 @@ from datetime import datetime
 from .models import Opcao
 from django.views.decorators.csrf import csrf_exempt
 
+@login_required(login_url='/auth/logar/')
+def pagina_inicial(request):
+    return render(request, 'pagina_inicial.html')
 
 @login_required(login_url='/auth/logar/')
 def pacientes(request):
