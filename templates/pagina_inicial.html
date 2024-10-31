@@ -2,38 +2,138 @@
 {% load static %}
 
 {% block 'head' %}
-<link rel="stylesheet" href="{% static 'plataforma/css/css.css' %}">
-<link rel="stylesheet" href="{% static 'plataforma/css/plano_alimentar.css' %}">
+<link rel="stylesheet" href="{% static 'plataforma/css/pagina_inicial.css' %}">
 {% endblock %}
 
 
 {% block 'body' %}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-2">
-                <a href="#" class="link-lateral"> <!--{% url 'pacientes' %}-->
-                    <div class="card-lateral">
-                        <img src="{% static 'plataforma/img/paciente.png' %}">
-                  
-                        <h3>Gerenciar Pacientes</h3>
-                    </div>
-                </a>
-                <a href="#" class="link-lateral"> <!--{% url 'plano_alimentar_listar' %} -->
-                    <div class="card-lateral">
-                        <img src="{% static 'plataforma/img/plano_alimentar.png' %}">                  
-                        <h3>Adicionar pacientes</h3>
-                    </div>
-                </a>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 sidebar">
+            <a href="{% url 'pacientes' %}" class="link-lateral">
+                <div class="card-lateral">
+                    <img src="{% static 'plataforma/img/paciente.png' %}" alt="Icone Gerenciar Pacientes"
+                        style="height: 40px; width: auto;">
+                    <h3>Gerenciar Pacientes</h3>
+                </div>
+            </a>
 
+            <a href="#" type="button" class="link-lateral" data-toggle="modal" data-target="#modal">
+                <div class="card-lateral">
+                    <img src="{% static 'plataforma/img/add-conta.png' %}" alt="Icone Adicionar Pacientes"
+                        style="height: 40px; width: auto;">
+                    <h3>Adicionar pacientes</h3>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-10">
+            <div class="patients-grid">
+                <!-- Cartões de pacientes fixos para exibição -->
+                <div class="patient-card">
+                    <img src="{% static 'plataforma/img/perfil2.png' %}" alt="Foto de perfil padrão">
+                    <p>Paciente X</p>
+                    <p>22 anos</p>
+                </div>
+                <div class="patient-card">
+                    <img src="{% static 'plataforma/img/perfil2.png' %}" alt="Foto de perfil padrão">
+                    <p>Paciente X</p>
+                    <p>22 anos</p>
+                </div>
+                <div class="patient-card">
+                    <img src="{% static 'plataforma/img/perfil2.png' %}" alt="Foto de perfil padrão">
+                    <p>Paciente X</p>
+                    <p>22 anos</p>
+                </div>
+                <div class="patient-card">
+                    <img src="{% static 'plataforma/img/perfil1.png' %}" alt="Foto de perfil padrão">
+                    <p>Paciente X</p>
+                    <p>22 anos</p>
+                </div>
+                <div class="patient-card">
+                    <img src="{% static 'plataforma/img/perfil1.png' %}" alt="Foto de perfil padrão">
+                    <p>Paciente X</p>
+                    <p>22 anos</p>
+                </div>
+                <div class="patient-card">
+                    <img src="{% static 'plataforma/img/perfil1.png' %}" alt="Foto de perfil padrão">
+                    <p>Paciente X</p>
+                    <p>22 anos</p>
+                </div>
             </div>
+        </div>
 
-            <div class="col-md-8">
-                {% block 'plataforma' %}
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title titulo" id="exampleModalLabel">Cadastrar paciente</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form action="{%url 'pacientes'%}" method="POST">{%csrf_token%}
 
 
-                {% endblock %}
+                            <div class="row">
+
+                                <div class="col-md-3">
+                                    <img src="{% static 'plataforma/img/perfil2.png' %}">
+                                </div>
+
+                                <div class="col-md-9">
+                                    <label>Nome:</label>
+                                    <input type="text" placeholder="Digite o nome do paciente..." class="form-control"
+                                        name="nome">
+                                </div>
+
+                            </div>
+
+                            <br>
+                            <label>Sexo:</label>
+                            <select name="sexo" class="form-control">
+                                <option value="M">Masculino</option>
+                                <option value="F">Feminino</option>
+                            </select>
+
+                            <br>
+
+                            <label>Idade:</label>
+                            <input type="number" placeholder="0" class="form-control" name="idade">
+
+                            <br>
+
+                            <label>E-mail:</label>
+                            <input type="email" placeholder="exemple@email.com" class="form-control" name="email">
+
+                            <br>
+
+                            <label>Telefone:</label>
+                            <input type="text" placeholder="+55 (00) 00000-0000" class="form-control" name="telefone">
+                            <br>
+                            <input type="submit" class="btn btn-success btn-lg" style="pointer-events: none;"
+                                value="Registrar">
+
+                        </form>
+
+
+                    </div>
+
+                </div>
             </div>
+        </div>
 
+        <div class="col-md-8">
+            {% block 'plataforma' %}
+
+
+            {% endblock %}
         </div>
     </div>
+</div>
+
+
 {% endblock%}
