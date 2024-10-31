@@ -39,9 +39,6 @@ def pacientes(request):
         if paciente.exists():
             messages.add_message(request, constants.ERROR, 'Já existe um paciente com esse E-mail')
             return redirect('/pacientes/')
-
-       
-        
         
         try:
             paciente = Pacientes(nome=nome,

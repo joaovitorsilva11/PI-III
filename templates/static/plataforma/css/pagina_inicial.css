@@ -1,0 +1,92 @@
+/* Estilos para a barra lateral */
+.sidebar {
+    background-color: #ffff;
+    height: auto;
+    padding-top: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .link-lateral {
+    display: block;
+    text-decoration: none;
+    margin-bottom: 15px;
+  }
+  .link-lateral:hover {
+    text-decoration: none;
+  }
+  .card-lateral {
+    background-color: #27DB8F;
+    width: 198px;
+    height: 124px;
+    margin-top: 20px;
+    padding: 15px;
+    color: white;
+    font-weight: bold;
+    align-items: center;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px gray;
+  }
+  .card-lateral h3 {
+    margin-top: 10px;
+    font-size: 1.1em;
+  }
+  
+  /* Estilos para a grade de pacientes */
+.patients-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 200px); /* Mudança aqui: 2 colunas de largura igual */
+    row-gap: 30px;
+    column-gap: 30px;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.patient-card {
+    background-color: #EAEAEA;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 3px 3px 6px gray;
+    padding: 20px;
+    text-align: center;
+}
+
+.patient-card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.patient-card p {
+    margin: 5px 0;
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    .patients-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas para telas menores */
+    }
+
+    .card-lateral {
+        width: 100%; /* Para ocuparem 100% da largura em telas menores */
+    }
+}
+
+@media (max-width: 576px) {
+    .patients-grid {
+        grid-template-columns: 1fr; /* 1 coluna para telas muito pequenas */
+    }
+
+    .card-lateral {
+        width: 100%; /* Para ocuparem 100% da largura em telas muito pequenas */
+    }
+
+    .patient-card {
+        height: auto; /* Permitir altura automática em telas pequenas */
+    }
+}
