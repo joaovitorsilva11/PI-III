@@ -1,0 +1,69 @@
+{% extends 'base_plataforma.html' %}
+
+{% load static %}
+
+{% block 'plataforma' %}
+
+    <link rel="stylesheet" href="{% static 'css\relatorio_paciente.css' %}">
+
+    {% if messages %}
+        <br>
+        {% for message in messages %}
+            <div class="alert {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <br>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="#" class="active">Gerenciar Clientes</a>
+        <a href="#">Dados do paciente</a>
+        <a href="#">Plano alimentar</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="header">
+            <img src="https://placehold.co/80x80" alt="Foto do paciente">
+            <div>
+                <h1>Paciente X</h1>
+                <p>22 anos</p>
+            </div>
+        </div>
+
+        <hr style="margin: 20px 0; border: 1px solid #e0e0e0;">
+
+        <button class="add-data-btn">Adicionar novos dados</button>
+
+        <table>
+            <tr>
+                <th>Peso</th>
+                <th>Altura</th>
+                <th>Percentual de gordura</th>
+                <th>Percentual de músculo</h>
+            </tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+        </table>
+
+        <div class="chart">
+            <!-- Placeholder for chart -->
+            <svg viewBox="0 0 100 50">
+                <path d="M5 40 C 20 20, 40 10, 60 20, 80 40, 95 30" stroke="#333" stroke-width="2" fill="none"/>
+                <circle cx="5" cy="40" r="2" fill="#333"/>
+                <circle cx="20" cy="20" r="2" fill="#333"/>
+                <circle cx="40" cy="10" r="2" fill="#333"/>
+                <circle cx="60" cy="20" r="2" fill="#333"/>
+                <circle cx="80" cy="40" r="2" fill="#333"/>
+                <circle cx="95" cy="30" r="2" fill="#333"/>
+            </svg>
+        </div>
+    </div>
+
+{% endblock %}

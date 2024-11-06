@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'autenticacao/css/css.css' %}">
+{% endblock %}
+
+{% block 'titulo' %}Cadastre-se{% endblock %}
+
+{% block 'body' %}
+    <div class="container-fluid min-vh-100">
+        <div class="row min-vh-100"> 
+            <!-- Sidebar -->
+            <div class="col-lg-3 col-md-4 col-sm-4 p-0">
+                <div class="logo_sidebar text-center">
+                    <h2 class="logo">
+                        <img class="img-fluid img_logo_sidebar" src="{% static 'autenticacao/img/BannerDietAtiva.png' %}" alt="Logo">
+                    </h2>
+                </div>
+            </div>
+
+            <!-- Formulário de Cadastro -->
+            <div class="col-lg-9 col-md-8 col-sm-8 p-0">
+                <div class="area_cadastrar p-0">
+                    <h2 class="titulo">Seja bem vindo</h2>
+                    
+                    {% if messages %}
+                        <br>
+                        {% for message in messages %}
+                            <div class="alert {{ message.tags }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    
+                    <p class="sub-titulo">Crie sua conta</p>
+                    <hr>
+                    
+                    <form action="{% url 'cadastro' %}" method="POST">{% csrf_token %}
+                        <div class="form-group">
+                            <label for="usuario" style="font-weight: bold;">Nome de usuário</label>
+                            <input id="usuario" class="form-control input-form" name="usuario" type="text" placeholder="Digite seu nome...">
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="bold">E-mail</label>
+                            <input id="email" class="form-control input-form" name="email" type="email" placeholder="Digite seu E-mail...">
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 form-group">
+                                <label for="senha" class="bold">Senha</label>
+                                <input id="senha" class="form-control input-form" name="senha" type="password" placeholder="Digite sua senha...">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label for="confirmar_senha" class="bold">Confirmar senha</label>
+                                <input id="confirmar_senha" class="form-control input-form" name="confirmar_senha" type="password" placeholder="Confirme sua senha...">
+                            </div>
+                        </div>
+                        <button class="btn-first">Registrar</button>
+                    </form>
+
+                    <div class="text-center mt-4">
+                        <h3 class="font-weight-bold">Já possui uma conta? <a href="{% url 'logar' %}" class="btn btn-outline-success btn-lg">Logar</a></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
