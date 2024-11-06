@@ -1,0 +1,55 @@
+/* senha.css */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Centraliza verticalmente */
+    margin: 0;
+    background-color: #f8f9fa; /* Cor de fundo leve para destacar a caixa */
+}
+
+.form-container {
+    background-color: white; /* Cor de fundo da caixa */
+    border-radius: 8px; /* Cantos arredondados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra leve para dar profundidade */
+    padding: 20px; /* Espaçamento interno */
+    max-width: 400px; /* Largura máxima */
+    width: 90%; /* Largura em relação à tela */
+    text-align: center; /* Centraliza o texto */
+}
+
+.logo {
+    width: 100px; /* Ajuste o tamanho da imagem conforme necessário */
+    margin-bottom: 20px; /* Espaço abaixo da imagem */
+}
+
+input.form-control {
+    width: 100%; /* Faz o input ocupar toda a largura do container */
+    padding: 10px; /* Espaçamento interno */
+    margin-bottom: 15px; /* Espaço entre os inputs */
+    border: 1px solid #ced4da; /* Borda padrão */
+    border-radius: 4px; /* Cantos arredondados */
+}
+
+input.form-control:focus {
+    border-color: #28a745; /* Cor da borda quando focado */
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); /* Sombra leve para indicar foco */
+}
+
+.btn {
+    background-color: #28a745; /* Cor verde do botão */
+    color: white; /* Cor do texto do botão */
+    border: none; /* Remove a borda padrão */
+    border-radius: 4px; /* Cantos arredondados do botão */
+    padding: 10px 15px; /* Espaçamento interno do botão */
+    cursor: pointer; /* Cursor de mão ao passar sobre o botão */
+    width: 100%; /* Botão ocupa toda a largura do container */
+}
+
+.btn:hover {
+    background-color: #218838; /* Cor do botão ao passar o mouse */
+}
+
+.messages {
+    margin-top: 20px; /* Espaço acima das mensagens */
+}
