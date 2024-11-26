@@ -8,6 +8,11 @@
 
 {% block 'body' %}
 <div class="container-fluid">
+
+    <div style="position: absolute; top: 10px; right: 10px;">
+        <a href="{% url 'sair' %}" class="btn btn-outline-success">Sair</a>
+    </div>
+
     <div class="row">
         <div class="col-md-2 sidebar">
             <a href="{% url 'pacientes' %}" class="link-lateral">
@@ -27,41 +32,7 @@
             </a>
         </div>
 
-        <!-- <div class="col-md-10">
-            <div class="patients-grid"> -->
-                <!-- Cartões de pacientes fixos para exibição -->
-                <!-- <div class="patient-card">
-                    <img src="{% static 'plataforma/img/perfil2.png' %}" alt="Foto de perfil padrão">
-                    <p>Paciente X</p>
-                    <p>22 anos</p>
-                </div>
-                <div class="patient-card">
-                    <img src="{% static 'plataforma/img/perfil2.png' %}" alt="Foto de perfil padrão">
-                    <p>Paciente X</p>
-                    <p>22 anos</p>
-                </div>
-                <div class="patient-card">
-                    <img src="{% static 'plataforma/img/perfil2.png' %}" alt="Foto de perfil padrão">
-                    <p>Paciente X</p>
-                    <p>22 anos</p>
-                </div>
-                <div class="patient-card">
-                    <img src="{% static 'plataforma/img/perfil1.png' %}" alt="Foto de perfil padrão">
-                    <p>Paciente X</p>
-                    <p>22 anos</p>
-                </div>
-                <div class="patient-card">
-                    <img src="{% static 'plataforma/img/perfil1.png' %}" alt="Foto de perfil padrão">
-                    <p>Paciente X</p>
-                    <p>22 anos</p>
-                </div>
-                <div class="patient-card">
-                    <img src="{% static 'plataforma/img/perfil1.png' %}" alt="Foto de perfil padrão">
-                    <p>Paciente X</p>
-                    <p>22 anos</p>
-                </div>
-            </div>
-        </div> -->
+        
         
 
         <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
