@@ -1,6 +1,10 @@
 {% extends 'pagina_inicial.html' %}
+
 {% load static %}
 
+{% block 'head' %}
+<link rel="stylesheet" href="{% static 'plataforma/css/pagina_inicial.css' %}">
+{% endblock %}
 {% block 'plataforma' %}
 
 {% if messages %}
