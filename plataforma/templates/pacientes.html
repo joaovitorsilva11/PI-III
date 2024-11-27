@@ -1,6 +1,10 @@
 {% extends 'pagina_inicial.html' %}
 {% load static %}
 
+{% block 'head' %}
+<link rel="stylesheet" href="{% static 'plataforma/css/pagina_inicial.css' %}">
+{% endblock %}
+
 {% block 'plataforma' %}
 
 {% if messages %}
@@ -12,29 +16,24 @@
 {% endfor %}
 {% endif %}
 
-<div class="row">
-
-    {% for paciente in pacientes%}
-    <div class="col-md-4">
+<div class="container">
+    <div class="patients-grid">
+        {% for paciente in pacientes %}
         <a href="{% url 'dados_paciente' paciente.id %}" class="link-hover">
-            <div class="card-paciente">
+            <div class="patient-card">
                 <div class="foto-perfil">
-
                     {% if paciente.sexo == "M" %}
-                    <img src="{% static 'plataforma/img/usuario.png' %}">
+                    <img src="{% static 'plataforma/img/usuario.png' %}" alt="Foto do paciente">
                     {% else %}
-                    <img src="{% static 'plataforma/img/usuario.png' %}">
+                    <img src="{% static 'plataforma/img/usuario.png' %}" alt="Foto da paciente">
                     {% endif %}
-
                 </div>
-                <br>
-                <p class="dados">{{paciente.nome}}</p>
-                <p class="dados">{{paciente.idade}}</p>
+                <p>{{ paciente.nome }}</p>
+                <p>{{ paciente.idade }} anos</p>
             </div>
         </a>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
 
-
-{% endblock%}
+{% endblock %}

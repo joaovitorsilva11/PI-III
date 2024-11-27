@@ -13,17 +13,15 @@
     {% endif %}
     <br>
 
-    <div class="row">
-
-        <div class="col-md-3">
-            <img src="{% static 'plataforma/img/usuario.png' %}">
+    <div class="row align-items-center">
+        <div class="col-md-3 text-center">
+            <img src="{% static 'plataforma/img/usuario.png' %}" alt="Foto do paciente" class="img-fluid rounded-circle" style="width: 150px; height: 150px;">
         </div>
-
-        <div class="col-md-3 dados descricao">
-            <h4>{{paciente.nome}}</h4>
-            <h6>{{paciente.idade}}</h6>
+    
+        <div class="col-md-6 dados descricao text-center">
+            <h4 class="font-weight-bold">{{ paciente.nome }}</h4>
+            <h6 class="text-muted">{{ paciente.idade }} anos</h6>
         </div>
-        
     </div>
     <hr>
 
