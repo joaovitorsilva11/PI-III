@@ -44,6 +44,11 @@
     text-align: center;
 }
 
+.foto-perfil img {
+    display: flex;
+    justify-content: center;
+}
+
 .dados{
     font-weight: bold;
 }

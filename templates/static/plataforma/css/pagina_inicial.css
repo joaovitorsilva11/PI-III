@@ -83,7 +83,12 @@
 
 .foto-pefil{
     display: flex;
-    justify-items: center;
+    justify-content: center;
+}
+
+.foto-pefil img {
+    display: flex;
+    justify-content: center;
 }
 
 
