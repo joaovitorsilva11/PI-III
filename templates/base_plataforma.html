@@ -3,7 +3,7 @@
 
 {% block 'head' %}
 <link rel="stylesheet" href="{% static 'plataforma/css/css.css' %}">
-<link rel="stylesheet" href="{% static 'plataforma/css/plano_alimentar.css' %}">
+<!-- <link rel="stylesheet" href="{% static 'plataforma/css/plano_alimentar.css' %}"> -->
 {% endblock %}
 
 
@@ -11,7 +11,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-2">
-            <a href="#" class="link-lateral"> <!--{% url 'pacientes' %}-->
+            <a href="{% url 'pacientes' %}" class="link-lateral"> <!--{% url 'pacientes' %}-->
                 <div class="card-lateral">
                     <img src="{% static 'plataforma/img/paciente.png' %}">
 
@@ -19,15 +19,15 @@
                 </div>
             </a>
 
-            <a href="#" class="link-lateral"> <!--{% url 'dados_paciente_listar' %}-->
+            <a href="{% url 'dados_paciente_listar' %}" class="link-lateral"> <!--{% url 'dados_paciente_listar' %}-->
                 <div class="card-lateral">
                     <img src="{% static 'plataforma/img/dados_paciente.png' %}">
 
-                    <h3>Dados do Pacientes</h3>
+                    <h3>Dados dos Pacientes</h3>
                 </div>
             </a>
 
-            <a href="#" class="link-lateral"> <!--{% url 'plano_alimentar_listar' %} -->
+            <a href="{% url 'plano_alimentar' paciente.id %}" class="link-lateral"> <!--{% url 'plano_alimentar_listar' %} -->
                 <div class="card-lateral">
                     <img src="{% static 'plataforma/img/plano_alimentar.png' %}">
                     <h3>Plano alimentar</h3>

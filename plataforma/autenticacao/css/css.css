@@ -1,0 +1,84 @@
+/*Estilo base*/
+
+
+.sidebar {
+    background-color: #27DB8F;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    float: left; /* Banner na esquerda */
+    width: 25%; /* 25% da tela */
+}
+
+.col-md-9 {
+    width: 75%; /* O restante ocupa 75% da tela */
+    float: right; /* Conteúdo fique à direita */
+}
+
+.logo_sidebar {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #27DB8F;
+}
+
+.img_logo_sidebar {
+    width: 100%;
+    height: 100vh;
+}
+
+.area_cadastrar {
+    margin-top: 8%;
+    margin-left: 15%;
+    width: 70%;
+}
+
+.titulo {
+    font-weight: bold;
+}
+
+.sub-titulo {
+    color: gray;
+}
+
+.input-form {
+    margin-top: 15px;
+    width: 100%;
+    padding: 5px;
+    outline: 0;
+}
+
+.input-form:focus {
+    border: 2px solid #27DB8F !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
+.bold {
+    font-weight: bold;
+    margin-top: 1.5rem;
+}
+
+.btn-first {
+    border: none;
+    margin-top: 1.5rem;
+    padding: 5px 15px;
+    font-size: 25px;
+    background-color: #27DB8F;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 1200px) {
+    .area_cadastrar {
+        margin-left: 10%;
+        width: 80%;
+    }
+}
+
